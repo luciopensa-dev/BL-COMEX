@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="BL COMEX - Consultoría en Comercio Exterior. Soluciones integrales de importación, exportación, despacho aduanero y logística internacional para empresas argentinas." />
+  <meta name="keywords" content="comercio exterior, importación, exportación, despacho aduanero, logística internacional, freight forwarding, Argentina" />
+  <title>BL COMEX | Consultoría en Comercio Exterior</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      --black: #050810;
+      --dark: #0a0f1e;
+      --dark-2: #0d1528;
+      --blue-deep: #0a1f44;
+      --blue: #1a3a6e;
+      --blue-mid: #1e4d9a;
+      --blue-accent: #2563eb;
+      --blue-light: #3b82f6;
+      --white: #ffffff;
+      --white-85: rgba(255,255,255,0.85);
+      --white-60: rgba(255,255,255,0.6);
+      --white-30: rgba(255,255,255,0.3);
+      --white-10: rgba(255,255,255,0.08);
+      --border: rgba(255,255,255,0.1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Barlow', sans-serif;
+      background: var(--black);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ── LANG TOGGLE ── */
+    .lang-toggle {
+      position: fixed;
+      top: 18px;
+      right: 24px;
+      z-index: 2000;
+      display: flex;
+      gap: 4px;
+      background: rgba(10,15,30,0.9);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 4px;
+      backdrop-filter: blur(10px);
+    }
+    .lang-toggle button {
+      background: none;
+      border: none;
+      color: var(--white-60);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      padding: 4px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .lang-toggle button.active {
+      background: var(--blue-accent);
+      color: var(--white);
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 72px;
+      background: rgba(5,8,16,0.95);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(20px);
+      transition: all 0.3s;
+    }
+    nav.scrolled {
+      height: 60px;
+      background: rgba(5,8,16,0.98);
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .logo-mark {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+    .logo-mark span { color: var(--blue-accent); }
+    .logo-sub {
+      display: flex;
+      flex-direction: column;
+      border-left: 1px solid var(--border);
+      padding-left: 10px;
+    }
+    .logo-sub-1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      color: var(--white-85);
+    }
+    .logo-sub-2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 9px;
+      font-weight: 400;
+      letter-spacing: 0.25em;
+      color: var(--white-60);
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--white-60);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta {
+      background: var(--blue-accent);
+      color: var(--white) !important;
+      padding: 9px 20px;
+      border-radius: 4px;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--blue-light) !important; color: var(--white) !important; }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    /* ── HERO ── */
+    #inicio {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 120px 48px 80px;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(5,8,16,0.97) 0%, rgba(10,31,68,0.85) 50%, rgba(5,8,16,0.95) 100%);
+      z-index: 1;
+    }
+    .hero-bg-img {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=1800&q=80');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.45;
+      z-index: 0;
+    }
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background-image:
+        linear-gradient(rgba(37,99,235,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(37,99,235,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+    }
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(37,99,235,0.15);
+      border: 1px solid rgba(37,99,235,0.4);
+      border-radius: 3px;
+      padding: 6px 14px;
+      margin-bottom: 32px;
+      opacity: 0;
+      animation: fadeUp 0.6s 0.2s forwards;
+    }
+    .hero-tag-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--blue-accent);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    .hero-tag span {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      color: var(--blue-light);
+      text-transform: uppercase;
+    }
+    .hero-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(42px, 6vw, 78px);
+      font-weight: 800;
+      line-height: 1.0;
+      letter-spacing: -0.01em;
+      color: var(--white);
+      margin-bottom: 24px;
+      opacity: 0;
+      animation: fadeUp 0.6s 0.35s forwards;
+    }
+    .hero-title em {
+      font-style: normal;
+      color: var(--blue-accent);
+    }
+    .hero-subtitle {
+      font-size: 17px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--white-60);
+      max-width: 580px;
+      margin-bottom: 44px;
+      opacity: 0;
+      animation: fadeUp 0.6s 0.5s forwards;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.6s 0.65s forwards;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--blue-accent);
+      color: var(--white);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 4px;
+      transition: all 0.25s;
+      border: 1px solid var(--blue-accent);
+    }
+    .btn-primary:hover {
+      background: var(--blue-light);
+      border-color: var(--blue-light);
+      transform: translateY(-2px);
+    }
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--white-85);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      transition: all 0.25s;
+    }
+    .btn-outline:hover {
+      border-color: var(--white-60);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+    .hero-stats {
+      position: absolute;
+      bottom: 56px;
+      right: 48px;
+      z-index: 2;
+      display: flex;
+      gap: 40px;
+      opacity: 0;
+      animation: fadeUp 0.6s 0.8s forwards;
+    }
+    .hero-stat {
+      text-align: right;
+    }
+    .hero-stat-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1;
+    }
+    .hero-stat-num span { color: var(--blue-accent); }
+    .hero-stat-label {
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--white-60);
+      letter-spacing: 0.05em;
+      margin-top: 2px;
+    }
+    .hero-scroll {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+      animation: fadeIn 1s 1.2s forwards;
+    }
+    .hero-scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, transparent, var(--blue-accent));
+      animation: scrollLine 1.5s ease-in-out infinite;
+    }
+    .hero-scroll span {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: var(--white-30);
+      text-transform: uppercase;
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 100px 48px; }
+    .section-header {
+      max-width: 680px;
+      margin-bottom: 64px;
+    }
+    .section-tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      color: var(--blue-accent);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-tag::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--blue-accent);
+    }
+    .section-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(34px, 4vw, 52px);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+    .section-desc {
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--white-60);
+    }
+
+    /* ── SERVICIOS ── */
+    #servicios { background: var(--dark); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .service-card {
+      background: var(--dark);
+      padding: 40px 36px;
+      position: relative;
+      transition: background 0.3s;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px;
+      height: 0;
+      background: var(--blue-accent);
+      transition: height 0.4s ease;
+    }
+    .service-card:hover::before { height: 100%; }
+    .service-card:hover { background: rgba(10,15,30,0.9); }
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(37,99,235,0.12);
+      border: 1px solid rgba(37,99,235,0.3);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      transition: all 0.3s;
+    }
+    .service-card:hover .service-icon {
+      background: rgba(37,99,235,0.25);
+      border-color: var(--blue-accent);
+    }
+    .service-icon i {
+      font-size: 20px;
+      color: var(--blue-accent);
+    }
+    .service-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .service-desc {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--white-60);
+    }
+    .service-num {
+      position: absolute;
+      bottom: 24px;
+      right: 28px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 48px;
+      font-weight: 800;
+      color: var(--white-10);
+      line-height: 1;
+    }
+
+    /* ── POR QUÉ ELEGIRNOS ── */
+    #por-que { background: var(--black); }
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .why-img-wrapper {
+      position: relative;
+    }
+    .why-img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      border-radius: 6px;
+      filter: brightness(0.7) saturate(0.8);
+    }
+    .why-img-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(10,31,68,0.5) 0%, transparent 60%);
+      border-radius: 6px;
+    }
+    .why-badge {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      background: var(--blue-accent);
+      border-radius: 6px;
+      padding: 20px 24px;
+      text-align: center;
+    }
+    .why-badge-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 40px;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1;
+    }
+    .why-badge-label {
+      font-size: 11px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.8);
+      letter-spacing: 0.05em;
+      margin-top: 2px;
+    }
+    .why-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      margin-top: 8px;
+    }
+    .why-item {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    .why-item-icon {
+      flex-shrink: 0;
+      width: 42px;
+      height: 42px;
+      background: rgba(37,99,235,0.1);
+      border: 1px solid rgba(37,99,235,0.25);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+    .why-item-icon i { font-size: 16px; color: var(--blue-accent); }
+    .why-item-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+    .why-item-text {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.6;
+      color: var(--white-60);
+    }
+
+    /* ── NOSOTROS ── */
+    #nosotros { background: var(--dark); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .about-text p {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.8;
+      color: var(--white-60);
+      margin-bottom: 20px;
+    }
+    .about-text p:last-child { margin-bottom: 0; }
+    .team-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .team-card {
+      background: var(--dark-2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 28px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      transition: border-color 0.3s;
+    }
+    .team-card:hover { border-color: rgba(37,99,235,0.4); }
+    .team-avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--blue);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--white);
+      border: 2px solid rgba(37,99,235,0.4);
+    }
+    .team-info-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 2px;
+    }
+    .team-info-role {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--blue-accent);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .team-info-desc {
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 1.6;
+      color: var(--white-60);
+    }
+
+    /* ── CONTACTO ── */
+    #contacto { background: var(--black); }
+    .contact-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 64px;
+      align-items: start;
+    }
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+    .contact-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .contact-icon {
+      width: 44px;
+      height: 44px;
+      background: rgba(37,99,235,0.1);
+      border: 1px solid rgba(37,99,235,0.25);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-icon i { font-size: 16px; color: var(--blue-accent); }
+    .contact-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--white-30);
+      margin-bottom: 4px;
+    }
+    .contact-value {
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--white-85);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .contact-value:hover { color: var(--blue-light); }
+    .contact-form {
+      background: var(--dark);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 40px;
+    }
+    .form-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 28px;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .form-group.full { grid-column: 1 / -1; }
+    label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--white-60);
+    }
+    input, textarea, select {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 12px 16px;
+      color: var(--white);
+      font-family: 'Barlow', sans-serif;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+    }
+    input:focus, textarea:focus, select:focus {
+      border-color: var(--blue-accent);
+    }
+    textarea { resize: vertical; min-height: 120px; }
+    select option { background: var(--dark-2); }
+    .btn-submit {
+      width: 100%;
+      background: var(--blue-accent);
+      color: var(--white);
+      border: none;
+      border-radius: 4px;
+      padding: 14px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.25s;
+      margin-top: 8px;
+    }
+    .btn-submit:hover { background: var(--blue-light); }
+    .map-wrapper {
+      margin-top: 80px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      height: 320px;
+    }
+    .map-wrapper iframe { width: 100%; height: 100%; border: none; filter: grayscale(0.5) invert(0.9) hue-rotate(180deg); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark-2);
+      border-top: 1px solid var(--border);
+      padding: 60px 48px 32px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 60px;
+      margin-bottom: 48px;
+    }
+    .footer-brand p {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--white-60);
+      margin-top: 16px;
+      max-width: 300px;
+    }
+    .footer-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--white-60);
+      margin-bottom: 20px;
+    }
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .footer-links a {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--white-60);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--white); }
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-copy {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--white-30);
+    }
+    .footer-social {
+      display: flex;
+      gap: 12px;
+    }
+    .footer-social a {
+      width: 36px;
+      height: 36px;
+      background: var(--white-10);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white-60);
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 14px;
+    }
+    .footer-social a:hover {
+      background: var(--blue-accent);
+      border-color: var(--blue-accent);
+      color: var(--white);
+    }
+
+    /* ── WA BUTTON ── */
+    .wa-btn {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 900;
+      width: 58px;
+      height: 58px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 24px rgba(37,211,102,0.4);
+      text-decoration: none;
+      transition: transform 0.25s, box-shadow 0.25s;
+      animation: fadeIn 1s 1.5s both;
+    }
+    .wa-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 32px rgba(37,211,102,0.55);
+    }
+    .wa-btn i { font-size: 28px; color: white; }
+    .wa-tooltip {
+      position: absolute;
+      right: 68px;
+      background: rgba(10,15,30,0.95);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 14px;
+      white-space: nowrap;
+      font-family: 'Barlow', sans-serif;
+      font-size: 13px;
+      color: var(--white-85);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s;
+    }
+    .wa-btn:hover .wa-tooltip { opacity: 1; }
+
+    /* ── MOBILE NAV ── */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 72px;
+      left: 0; right: 0;
+      background: rgba(5,8,16,0.98);
+      border-bottom: 1px solid var(--border);
+      padding: 24px 32px;
+      z-index: 999;
+      flex-direction: column;
+      gap: 20px;
+      backdrop-filter: blur(20px);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--white-60);
+      text-decoration: none;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    @keyframes scrollLine {
+      0% { transform: scaleY(0); transform-origin: top; }
+      50% { transform: scaleY(1); transform-origin: top; }
+      51% { transform: scaleY(1); transform-origin: bottom; }
+      100% { transform: scaleY(0); transform-origin: bottom; }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      section { padding: 72px 24px; }
+      #inicio { padding: 100px 24px 72px; }
+      .hero-stats { display: none; }
+      .why-grid, .about-grid, .contact-wrapper { grid-template-columns: 1fr; gap: 40px; }
+      .why-badge { bottom: -10px; right: -10px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .form-row { grid-template-columns: 1fr; }
+      .lang-toggle { top: auto; bottom: 100px; right: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- LANG TOGGLE -->
+<div class="lang-toggle">
+  <button class="active" onclick="setLang('es')" id="btn-es">ES</button>
+  <button onclick="setLang('en')" id="btn-en">EN</button>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#inicio" class="nav-logo">
+    <div class="logo-mark">BL<span>.</span></div>
+    <div class="logo-sub">
+      <span class="logo-sub-2" style="letter-spacing:0.25em;font-size:10px;color:rgba(255,255,255,0.6);font-family:'Barlow Condensed',sans-serif;font-weight:500;">COMERCIO EXTERIOR</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#servicios" data-es="Servicios" data-en="Services">Servicios</a></li>
+    <li><a href="#por-que" data-es="Por Qué Elegirnos" data-en="Why Us">Por Qué Elegirnos</a></li>
+    <li><a href="#nosotros" data-es="Nosotros" data-en="About Us">Nosotros</a></li>
+    <li><a href="#contacto" class="nav-cta" data-es="Contacto" data-en="Contact">Contacto</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#servicios" onclick="toggleMenu()" data-es="Servicios" data-en="Services">Servicios</a>
+  <a href="#por-que" onclick="toggleMenu()" data-es="Por Qué Elegirnos" data-en="Why Us">Por Qué Elegirnos</a>
+  <a href="#nosotros" onclick="toggleMenu()" data-es="Nosotros" data-en="About Us">Nosotros</a>
+  <a href="#contacto" onclick="toggleMenu()" data-es="Contacto" data-en="Contact">Contacto</a>
+</div>
+
+<!-- HERO -->
+<section id="inicio">
+  <div class="hero-bg-img"></div>
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-tag">
+      <div class="hero-tag-dot"></div>
+      <span data-es="Buenos Aires, Argentina · Operaciones Globales" data-en="Buenos Aires, Argentina · Global Operations">Buenos Aires, Argentina · Operaciones Globales</span>
+    </div>
+    <h1 class="hero-title" data-es="Ayudamos a empresas<br>argentinas a <em>crecer</em> y<br>expandirse en el<br>mercado global." data-en="We help Argentine<br>companies <em>grow</em> and<br>expand into<br>the global market.">
+      Ayudamos a empresas<br>argentinas a <em>crecer</em> y<br>expandirse en el<br>mercado global.
+    </h1>
+    <p class="hero-subtitle" data-es="Soluciones integrales de comercio exterior. Operamos con estándares internacionales para que tu empresa cruce fronteras sin fricción." data-en="Comprehensive foreign trade solutions. We operate with international standards so your company crosses borders without friction.">
+      Soluciones integrales de comercio exterior. Operamos con estándares internacionales para que tu empresa cruce fronteras sin fricción.
+    </p>
+    <div class="hero-actions">
+      <a href="#contacto" class="btn-primary" data-es="Solicitá tu cotización &rarr;" data-en="Request a quote &rarr;">Solicitá tu cotización →</a>
+      <a href="#servicios" class="btn-outline" data-es="Ver servicios" data-en="View services">Ver servicios</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span data-es="Scroll" data-en="Scroll">Scroll</span>
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+  <div class="section-header reveal">
+    <div class="section-tag" data-es="Servicios" data-en="Services">Servicios</div>
+    <h2 class="section-title" data-es="Soluciones integrales<br>para tu operación" data-en="Comprehensive solutions<br>for your operation">Soluciones integrales<br>para tu operación</h2>
+    <p class="section-desc" data-es="Cubrimos cada etapa del proceso de comercio exterior con experiencia, agilidad y atención personalizada." data-en="We cover every stage of the foreign trade process with expertise, agility and personalized attention.">Cubrimos cada etapa del proceso de comercio exterior con experiencia, agilidad y atención personalizada.</p>
+  </div>
+  <div class="services-grid reveal">
+    <div class="service-card">
+      <div class="service-icon"><i class="fas fa-ship"></i></div>
+      <div class="service-name" data-es="Freight Forwarding" data-en="Freight Forwarding">Freight Forwarding</div>
+      <p class="service-desc" data-es="Coordinamos el transporte internacional de cargas marítimas, aéreas y terrestres, asegurando tiempos óptimos y costos competitivos." data-en="We coordinate international transport of maritime, air and land cargo, ensuring optimal times and competitive costs.">Coordinamos el transporte internacional de cargas marítimas, aéreas y terrestres, asegurando tiempos óptimos y costos competitivos.</p>
+      <div class="service-num">01</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fas fa-file-invoice"></i></div>
+      <div class="service-name" data-es="Despacho Aduanero" data-en="Customs Clearance">Despacho Aduanero</div>
+      <p class="service-desc" data-es="Gestión completa de trámites aduaneros para importaciones y exportaciones, cumpliendo con toda la normativa vigente." data-en="Full management of customs procedures for imports and exports, complying with all current regulations.">Gestión completa de trámites aduaneros para importaciones y exportaciones, cumpliendo con toda la normativa vigente.</p>
+      <div class="service-num">02</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fas fa-arrow-down-to-bracket"></i></div>
+      <div class="service-name" data-es="Importación" data-en="Importing">Importación</div>
+      <p class="service-desc" data-es="Acompañamos todo el proceso de importación de punta a punta: planificación, documentación, logística y seguimiento operativo." data-en="We accompany the entire import process end to end: planning, documentation, logistics and operational monitoring.">Acompañamos todo el proceso de importación de punta a punta: planificación, documentación, logística y seguimiento operativo.</p>
+      <div class="service-num">03</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fas fa-arrow-up-from-bracket"></i></div>
+      <div class="service-name" data-es="Exportación" data-en="Exporting">Exportación</div>
+      <p class="service-desc" data-es="Impulsamos tus exportaciones con asesoramiento estratégico, búsqueda de mercados y gestión operativa integral." data-en="We boost your exports with strategic consulting, market research and comprehensive operational management.">Impulsamos tus exportaciones con asesoramiento estratégico, búsqueda de mercados y gestión operativa integral.</p>
+      <div class="service-num">04</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fas fa-briefcase"></i></div>
+      <div class="service-name" data-es="Consultoría COMEX" data-en="COMEX Consulting">Consultoría COMEX</div>
+      <p class="service-desc" data-es="Asesoramiento estratégico integral para el proceso de internacionalización de tu empresa, adaptado a tus necesidades." data-en="Comprehensive strategic advice for your company's internationalization process, tailored to your needs.">Asesoramiento estratégico integral para el proceso de internacionalización de tu empresa, adaptado a tus necesidades.</p>
+      <div class="service-num">05</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fas fa-truck-fast"></i></div>
+      <div class="service-name" data-es="Logística y Coordinación" data-en="Logistics & Coordination">Logística y Coordinación</div>
+      <p class="service-desc" data-es="Coordinación logística integral con clientes y proveedores, traslados internos puerto-depósito y gestión de organismos terceros." data-en="Comprehensive logistics coordination with clients and suppliers, internal port-to-warehouse transfers and third-party agency management.">Coordinación logística integral con clientes y proveedores, traslados internos puerto-depósito y gestión de organismos terceros.</p>
+      <div class="service-num">06</div>
+    </div>
+  </div>
+</section>
+
+<!-- POR QUÉ ELEGIRNOS -->
+<section id="por-que">
+  <div class="why-grid">
+    <div class="why-img-wrapper reveal">
+      <img src="https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?w=800&q=80" alt="Puerto de contenedores" class="why-img" />
+      <div class="why-img-overlay"></div>
+      <div class="why-badge">
+        <div class="why-badge-num">360°</div>
+        <div class="why-badge-label" data-es="Cobertura integral" data-en="Full coverage">Cobertura integral</div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="section-tag" data-es="Por Qué Elegirnos" data-en="Why Choose Us">Por Qué Elegirnos</div>
+      <h2 class="section-title" data-es="Tu operación en manos<br>de expertos" data-en="Your operation in the<br>hands of experts">Tu operación en manos<br>de expertos</h2>
+      <ul class="why-list">
+        <li class="why-item">
+          <div class="why-item-icon"><i class="fas fa-globe"></i></div>
+          <div>
+            <div class="why-item-title" data-es="Expertos en Comercio Internacional" data-en="International Trade Experts">Expertos en Comercio Internacional</div>
+            <p class="why-item-text" data-es="Equipo multidisciplinario con dominio de tendencias, normativas y mejores prácticas del mercado global." data-en="Multidisciplinary team with mastery of trends, regulations and best practices in the global market.">Equipo multidisciplinario con dominio de tendencias, normativas y mejores prácticas del mercado global.</p>
+          </div>
+        </li>
+        <li class="why-item">
+          <div class="why-item-icon"><i class="fas fa-user-tie"></i></div>
+          <div>
+            <div class="why-item-title" data-es="Enfoque Personalizado" data-en="Personalized Approach">Enfoque Personalizado</div>
+            <p class="why-item-text" data-es="Nos adaptamos a tus necesidades específicas y trabajamos de la mano para cumplir tus objetivos." data-en="We adapt to your specific needs and work hand in hand to achieve your goals.">Nos adaptamos a tus necesidades específicas y trabajamos de la mano para cumplir tus objetivos.</p>
+          </div>
+        </li>
+        <li class="why-item">
+          <div class="why-item-icon"><i class="fas fa-network-wired"></i></div>
+          <div>
+            <div class="why-item-title" data-es="Red Global de Contactos" data-en="Global Network of Contacts">Red Global de Contactos</div>
+            <p class="why-item-text" data-es="Nuestra experiencia nos permite conectarte con los mejores proveedores y clientes internacionales." data-en="Our experience allows us to connect you with the best international suppliers and clients.">Nuestra experiencia nos permite conectarte con los mejores proveedores y clientes internacionales.</p>
+          </div>
+        </li>
+        <li class="why-item">
+          <div class="why-item-icon"><i class="fas fa-layer-group"></i></div>
+          <div>
+            <div class="why-item-title" data-es="Todas las Soluciones en un Solo Lugar" data-en="All Solutions in One Place">Todas las Soluciones en un Solo Lugar</div>
+            <p class="why-item-text" data-es="Integramos todos los servicios para que vos solo te enfoques en crecer tu negocio." data-en="We integrate all services so you can focus solely on growing your business.">Integramos todos los servicios para que vos solo te enfoques en crecer tu negocio.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- NOSOTROS -->
+<section id="nosotros">
+  <div class="about-grid">
+    <div>
+      <div class="section-header reveal" style="margin-bottom: 32px;">
+        <div class="section-tag" data-es="Sobre Nosotros" data-en="About Us">Sobre Nosotros</div>
+        <h2 class="section-title" data-es="Comercio exterior<br>con experiencia real" data-en="Foreign trade<br>with real experience">Comercio exterior<br>con experiencia real</h2>
+      </div>
+      <div class="about-text reveal">
+        <p data-es="En BL COMEX volcamos años de experiencia en distintas áreas del comercio exterior para acompañar a empresas que necesitan importar y exportar con respaldo, claridad y seguimiento constante." data-en="At BL COMEX we bring years of experience in different areas of foreign trade to support companies that need to import and export with backing, clarity and constant follow-up.">En BL COMEX volcamos años de experiencia en distintas áreas del comercio exterior para acompañar a empresas que necesitan importar y exportar con respaldo, claridad y seguimiento constante.</p>
+        <p data-es="Conocemos de cerca cómo funciona la operatoria diaria del comex en Argentina y entendemos los desafíos que aparecen en cada etapa. Por eso trabajamos de manera práctica y personalizada, involucrándonos en cada operación como si fuera propia." data-en="We know firsthand how daily foreign trade operations work in Argentina and understand the challenges that arise at each stage. That's why we work in a practical and personalized way, getting involved in each operation as if it were our own.">Conocemos de cerca cómo funciona la operatoria diaria del comex en Argentina y entendemos los desafíos que aparecen en cada etapa. Por eso trabajamos de manera práctica y personalizada, involucrándonos en cada operación como si fuera propia.</p>
+        <p data-es="Acompañamos procesos de importación y exportación de punta a punta: planificación, documentación, coordinación logística, seguimiento operativo y resolución de imprevistos." data-en="We accompany import and export processes from end to end: planning, documentation, logistics coordination, operational monitoring and problem resolution.">Acompañamos procesos de importación y exportación de punta a punta: planificación, documentación, coordinación logística, seguimiento operativo y resolución de imprevistos.</p>
+        <p data-es="Más que ofrecer un servicio, buscamos construir relaciones a largo plazo, aportando experiencia, compromiso y soluciones concretas para que cada operación avance de manera ágil y segura." data-en="More than offering a service, we seek to build long-term relationships, contributing experience, commitment and concrete solutions so that each operation moves forward in an agile and safe manner.">Más que ofrecer un servicio, buscamos construir relaciones a largo plazo, aportando experiencia, compromiso y soluciones concretas para que cada operación avance de manera ágil y segura.</p>
+      </div>
+    </div>
+    <div class="team-cards reveal">
+      <div class="team-card">
+        <div class="team-avatar">LP</div>
+        <div class="team-info">
+          <div class="team-info-name">Lucio Pensa</div>
+          <div class="team-info-role" data-es="Logística Internacional & Estrategia" data-en="International Logistics & Strategy">Logística Internacional & Estrategia</div>
+          <div class="team-info-desc" data-es="Experiencia en Logística Internacional y Asesoramiento Estratégico de Negocios para el proceso de internacionalización de empresas." data-en="Experience in International Logistics and Strategic Business Consulting for the internationalization of companies.">Experiencia en Logística Internacional y Asesoramiento Estratégico de Negocios para el proceso de internacionalización de empresas.</div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">BJ</div>
+        <div class="team-info">
+          <div class="team-info-name">Benjamín Jaure</div>
+          <div class="team-info-role" data-es="Analista de Comercio Exterior" data-en="Foreign Trade Analyst">Analista de Comercio Exterior</div>
+          <div class="team-info-desc" data-es="Analista de Comercio Exterior con amplio conocimiento en Compras y control de documentación requerida para su logística eficiente." data-en="Foreign Trade Analyst with extensive knowledge in Purchasing and control of documentation required for efficient logistics.">Analista de Comercio Exterior con amplio conocimiento en Compras y control de documentación requerida para su logística eficiente.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="section-header reveal">
+    <div class="section-tag" data-es="Contacto" data-en="Contact">Contacto</div>
+    <h2 class="section-title" data-es="¿Listo para crecer<br>en el mundo?" data-en="Ready to grow<br>globally?">¿Listo para crecer<br>en el mundo?</h2>
+    <p class="section-desc" data-es="Contactanos y te asesoramos sin compromiso sobre cómo podemos acompañar tu operación." data-en="Contact us and we'll advise you with no obligation on how we can support your operation.">Contactanos y te asesoramos sin compromiso sobre cómo podemos acompañar tu operación.</p>
+  </div>
+  <div class="contact-wrapper reveal">
+    <div class="contact-info">
+      <div class="contact-item">
+        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+        <div>
+          <div class="contact-label" data-es="Email general" data-en="General email">Email general</div>
+          <a href="mailto:consultas@blcomex.com.ar" class="contact-value">consultas@blcomex.com.ar</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon"><i class="fas fa-user"></i></div>
+        <div>
+          <div class="contact-label">Lucio Pensa</div>
+          <a href="mailto:lucio.pensa@blcomex.com.ar" class="contact-value">lucio.pensa@blcomex.com.ar</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon"><i class="fas fa-user"></i></div>
+        <div>
+          <div class="contact-label">Benjamín Jaure</div>
+          <a href="mailto:benjamin.jaure@blcomex.com.ar" class="contact-value">benjamin.jaure@blcomex.com.ar</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
+        <div>
+          <div class="contact-label">WhatsApp</div>
+          <a href="https://wa.me/5491136298097" target="_blank" class="contact-value">+54 9 11 3629-8097</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon"><i class="fas fa-globe"></i></div>
+        <div>
+          <div class="contact-label" data-es="Sitio web" data-en="Website">Sitio web</div>
+          <a href="https://www.blcomex.com.ar" target="_blank" class="contact-value">www.blcomex.com.ar</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon"><i class="fab fa-instagram"></i></div>
+        <div>
+          <div class="contact-label">Instagram</div>
+          <a href="https://www.instagram.com/blcomex_" target="_blank" class="contact-value">@blcomex_</a>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <div class="form-title" data-es="Envianos tu consulta" data-en="Send us your inquiry">Envianos tu consulta</div>
+      <div class="form-row">
+        <div class="form-group">
+          <label data-es="Nombre" data-en="Name">Nombre</label>
+          <input type="text" placeholder="Tu nombre" data-ph-es="Tu nombre" data-ph-en="Your name" />
+        </div>
+        <div class="form-group">
+          <label data-es="Empresa" data-en="Company">Empresa</label>
+          <input type="text" placeholder="Nombre de empresa" data-ph-es="Nombre de empresa" data-ph-en="Company name" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" placeholder="tu@email.com" />
+      </div>
+      <div class="form-group">
+        <label data-es="Servicio de interés" data-en="Service of interest">Servicio de interés</label>
+        <select>
+          <option value="" data-es="Seleccioná una opción" data-en="Select an option">Seleccioná una opción</option>
+          <option data-es="Freight Forwarding" data-en="Freight Forwarding">Freight Forwarding</option>
+          <option data-es="Despacho Aduanero" data-en="Customs Clearance">Despacho Aduanero</option>
+          <option data-es="Importación" data-en="Importing">Importación</option>
+          <option data-es="Exportación" data-en="Exporting">Exportación</option>
+          <option data-es="Consultoría COMEX" data-en="COMEX Consulting">Consultoría COMEX</option>
+          <option data-es="Logística y Coordinación" data-en="Logistics & Coordination">Logística y Coordinación</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label data-es="Mensaje" data-en="Message">Mensaje</label>
+        <textarea placeholder="Contanos sobre tu operación o consulta..." data-ph-es="Contanos sobre tu operación o consulta..." data-ph-en="Tell us about your operation or inquiry..."></textarea>
+      </div>
+      <button class="btn-submit" onclick="submitForm()" data-es="Enviar consulta" data-en="Send inquiry">Enviar consulta</button>
+    </div>
+  </div>
+  <div class="map-wrapper reveal">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d208612.32768849988!2d-58.63239!3d-34.61315!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcca3b09000001%3A0x6ddb14b549a5d7cf!2sBuenos%20Aires%2C%20Argentina!5e0!3m2!1ses!2sar!4v1700000000000"
+      allowfullscreen="" loading="lazy">
+    </iframe>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div class="logo-mark">BL<span style="color:var(--blue-accent)">.</span></div>
+        <div class="logo-sub">
+          <span class="logo-sub-2" style="letter-spacing:0.25em;font-size:10px;color:rgba(255,255,255,0.6);font-family:'Barlow Condensed',sans-serif;font-weight:500;">COMERCIO EXTERIOR</span>
+        </div>
+      </div>
+      <p data-es="Tu socio de confianza para hacer crecer tu negocio en el mundo. Soluciones integrales de comercio exterior con estándares internacionales." data-en="Your trusted partner to grow your business in the world. Comprehensive foreign trade solutions with international standards.">Tu socio de confianza para hacer crecer tu negocio en el mundo. Soluciones integrales de comercio exterior con estándares internacionales.</p>
+    </div>
+    <div>
+      <div class="footer-title" data-es="Servicios" data-en="Services">Servicios</div>
+      <ul class="footer-links">
+        <li><a href="#servicios" data-es="Freight Forwarding" data-en="Freight Forwarding">Freight Forwarding</a></li>
+        <li><a href="#servicios" data-es="Despacho Aduanero" data-en="Customs Clearance">Despacho Aduanero</a></li>
+        <li><a href="#servicios" data-es="Importación" data-en="Importing">Importación</a></li>
+        <li><a href="#servicios" data-es="Exportación" data-en="Exporting">Exportación</a></li>
+        <li><a href="#servicios" data-es="Consultoría COMEX" data-en="COMEX Consulting">Consultoría COMEX</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-title" data-es="Contacto" data-en="Contact">Contacto</div>
+      <ul class="footer-links">
+        <li><a href="mailto:consultas@blcomex.com.ar">consultas@blcomex.com.ar</a></li>
+        <li><a href="https://wa.me/5491136298097">+54 9 11 3629-8097</a></li>
+        <li><a href="#nosotros" data-es="Sobre Nosotros" data-en="About Us">Sobre Nosotros</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy" data-es="© 2025 BL COMEX Consultoría. Todos los derechos reservados." data-en="© 2025 BL COMEX Consulting. All rights reserved.">© 2025 BL COMEX Consultoría. Todos los derechos reservados.</div>
+    <div class="footer-social">
+      <a href="https://www.linkedin.com/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://www.instagram.com/blcomex_" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://wa.me/5491136298097" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+    </div>
+  </div>
+</footer>
+
+<!-- WA FLOATING -->
+<a href="https://wa.me/5491136298097" target="_blank" class="wa-btn" title="WhatsApp">
+  <div class="wa-tooltip" data-es="¡Chateá con nosotros!" data-en="Chat with us!">¡Chateá con nosotros!</div>
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+  // ── SCROLL NAV ──
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // ── MOBILE MENU ──
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+
+  // ── SCROLL REVEAL ──
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => observer.observe(r));
+
+  // ── FORM SUBMIT ──
+  function submitForm() {
+    const lang = document.documentElement.lang || 'es';
+    alert(lang === 'en'
+      ? 'Thank you! We will contact you shortly.'
+      : '¡Gracias! Nos pondremos en contacto a la brevedad.');
+  }
+
+  // ── LANG TOGGLE ──
+  let currentLang = 'es';
+  function setLang(lang) {
+    currentLang = lang;
+    document.documentElement.lang = lang;
+    document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+
+    // Update text content
+    document.querySelectorAll('[data-es]').forEach(el => {
+      const text = el.getAttribute('data-' + lang);
+      if (text) {
+        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+          el.placeholder = text;
+        } else if (el.tagName === 'OPTION') {
+          el.textContent = text;
+        } else {
+          el.innerHTML = text;
+        }
+      }
+    });
+
+    // Update placeholders
+    document.querySelectorAll('[data-ph-' + lang + ']').forEach(el => {
+      el.placeholder = el.getAttribute('data-ph-' + lang);
+    });
+  }
+</script>
+</body>
+</html>
